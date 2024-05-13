@@ -1,0 +1,1 @@
+clang-format -style=webkit -i ./*cpp

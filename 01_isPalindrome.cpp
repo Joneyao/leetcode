@@ -12,13 +12,24 @@
 #include <vector>
 using namespace std;
 
-struct ListNode
-{
+struct ListNode {
     int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode* next;
+    ListNode()
+        : val(0)
+        , next(nullptr)
+    {
+    }
+    ListNode(int x)
+        : val(x)
+        , next(nullptr)
+    {
+    }
+    ListNode(int x, ListNode* next)
+        : val(x)
+        , next(next)
+    {
+    }
 };
 
 /**
@@ -28,14 +39,12 @@ struct ListNode
  * 2. 循环比较
  */
 
-class Solution
-{
+class Solution {
 public:
-    bool isPalindrome(ListNode *head)
+    bool isPalindrome(ListNode* head)
     {
         std::vector<int> list;
-        while (head)
-        {
+        while (head) {
             list.push_back(head->val);
             head = head->next;
         }
@@ -44,8 +53,7 @@ public:
         int total_len = list.size();
         int index = 0;
         int tail_index = total_len - 1;
-        while (index < total_len / 2)
-        {
+        while (index < total_len / 2) {
             if (list[index] != list[tail_index])
                 return false;
 
@@ -57,18 +65,18 @@ public:
     }
 };
 
-int main(int argc, const char **argv)
+int main(int argc, const char** argv)
 {
     Solution test;
 
     // create a test chain
-    ListNode *head = new ListNode;
+    ListNode* head = new ListNode;
     head->val = 1;
-    ListNode *t1 = new ListNode;
+    ListNode* t1 = new ListNode;
     t1->val = 2;
-    ListNode *t2 = new ListNode;
+    ListNode* t2 = new ListNode;
     t2->val = 1;
-    ListNode *t3 = new ListNode;
+    ListNode* t3 = new ListNode;
     t3->val = 1;
 
     head->next = t1;
@@ -76,10 +84,9 @@ int main(int argc, const char **argv)
     t2->next = t3;
     t3->next = nullptr;
 
-    cout << "the result: " << test.isPalindrome(head)  << endl;
+    cout << "the result: " << test.isPalindrome(head) << endl;
 
     // release
-
 
     return 0;
 }
