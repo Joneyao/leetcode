@@ -1,7 +1,7 @@
 #include <iostream>
 #include <set>
-#include <vector>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -9,18 +9,15 @@ class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& temperatures)
     {
-        vector<int> answers(temperatures.size(),0);
+        vector<int> answers(temperatures.size(), 0);
         stack<int> index;
-        
-        for (int i = 0; i < temperatures.size(); i++) 
-        {
-            while (!index.empty() && temperatures[i] > temperatures[index.top()])
-            {
+
+        for (int i = 0; i < temperatures.size(); i++) {
+            while (!index.empty() && temperatures[i] > temperatures[index.top()]) {
                 answers[index.top()] = i - index.top();
                 index.pop();
             }
             index.push(i);
-            
         }
 
         // int i = 0, j = 0;
